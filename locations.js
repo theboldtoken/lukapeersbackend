@@ -1,7 +1,7 @@
 const axios = require('axios');
 const CachemanFile = require('cacheman-file');
 
-const cache = new CachemanFile({tmpDir: '.cache', ttl: 24*3600,});
+const cache = new CachemanFile({tmpDir: '.cache', ttl: 30*24*3600,});
 
 const getPeers = async () => {
     try {
@@ -21,8 +21,9 @@ const getLocation = async (ip) => new Promise((resolve) => {
             return resolve(value);
         }
         try {
-            const res = await axios.get(`https://freegeoip.net/json/${ip}`);
-            cache.set(ip, res.data);
+            console.log(`Request geolocation for IP: ${ip}`);
+            const res = await axios.get(`http://api.ipstack.com/${ip}?access_key=_IPSTACK_API_KEY_&output=json&legacy=1`);
+            cache.set(ip, res.data, 30*24*3600);
             resolve(res.data);
         } catch (e) {
             console.log('Can\'t get location', e);
