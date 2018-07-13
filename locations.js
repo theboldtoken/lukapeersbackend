@@ -22,7 +22,7 @@ const getLocation = async (ip) => new Promise((resolve) => {
         }
         try {
             console.log(`Request geolocation for IP: ${ip}`);
-            const res = await axios.get(`http://api.ipstack.com/${ip}?access_key=_IPSTACK_API_KEY_&output=json&legacy=1`);
+            const res = await axios.get(`http://api.ipstack.com/${ip}?access_key=f260bbb194ebfd8c26883e512580fae5&output=json&legacy=1`);
             cache.set(ip, res.data, 30*24*3600);
             resolve(res.data);
         } catch (e) {
@@ -40,7 +40,7 @@ const getLocations = async () => {
 
 const cacheLocations = async () => {
     const locations = await getLocations();
-    cache.set('locations', JSON.stringify(locations))
+    cache.set('locations', JSON.stringify(locations), 180);
 };
 
 const getCachedLocations = () => new Promise((resolve) => {

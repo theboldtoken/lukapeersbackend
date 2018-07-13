@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Niobio Cash Peers Map</title>
+    <title>LuKa Peers Map</title>
 
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.2.0/dist/leaflet.css"
           integrity="sha512-M2wvCLH6DSRazYeZRIm1JnYyh22purTM+FDB5CsyxtQJYeKq83arPe5wgbNmcFXGqiSH2XR8dT/fJISVA1r/zQ=="
@@ -38,7 +38,7 @@
 <body>
 <div class="container">
     <div class="row">
-        <h2>Niobio Cash mapa de Nodes</h2>
+        <h2>LuKa Nodes</h2>
         <div id="map"></div>
 
         <div class="col-sm-7">
@@ -77,6 +77,8 @@
 
 <script>
     const locations = <%- locations %>;
+console.log(locations);
+
 
     const tiles = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         maxZoom: 18,
